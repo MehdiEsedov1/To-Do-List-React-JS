@@ -1,12 +1,11 @@
-import './App.css';
-import { useState } from 'react';
-import { store } from './store/store';
-import { addTodo, clearTodo } from './store/tasks';
-import Todos from './ShowTodos';
+import "./App.css";
+import { useState } from "react";
+import { store } from "./store/store";
+import { addTodo, clearTodo } from "./store/tasks";
+import Todos from "./ShowTodos";
 
 function App() {
-
-  const [todo, settodo] = useState('');
+  const [todo, settodo] = useState("");
 
   return (
     <div className="App">
@@ -21,11 +20,17 @@ function App() {
                 e.preventDefault();
                 store.dispatch(addTodo(todo));
                 console.log("Current state :" + store.getState());
-                settodo('');
-              }}>
-              <input type="text" placeholder="write a todo" value={todo} onChange={(e) => {
-                settodo(e.target.value);
-              }} />
+                settodo("");
+              }}
+            >
+              <input
+                type="text"
+                placeholder="write a todo"
+                value={todo}
+                onChange={(e) => {
+                  settodo(e.target.value);
+                }}
+              />
               <div>
                 <button type="submit">
                   <p>Add a todo</p>
@@ -37,16 +42,17 @@ function App() {
             <Todos />
           </div>
           <div className="clear-todos">
-            <button onClick={() => {
-              store.dispatch(clearTodo());
-              confirm("Are you sure you want to delete all todos?");
-            }}>
+            <button
+              onClick={() => {
+                store.dispatch(clearTodo());
+              }}
+            >
               <p>Clear all todos</p>
             </button>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 
